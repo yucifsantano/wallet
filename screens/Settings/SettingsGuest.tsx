@@ -1,31 +1,34 @@
 import React from "react";
-import { StyleSheet, View,  ScrollView, Text, Image } from "react-native";
+import { StyleSheet, View, ScrollView, Text, Image } from "react-native";
 import { Button } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 
 export default function SettingsGuest() {
-    return (
-      <ScrollView centerContent={true} style={styles.viewBody}>
-        <Image
-          style={styles.image}
-          source={require("../../assets/img/user-guest.jpg")}
-          resizeMode="contain"
+  const navigator = useNavigation();
+
+  return (
+    <ScrollView centerContent={true} style={styles.viewBody}>
+      <Image
+        style={styles.image}
+        source={require("../../assets/img/user-guest.jpg")}
+        resizeMode="contain"
+      />
+      <Text style={styles.title}>Consulta tu perfíl</Text>
+      <Text style={styles.description}>
+        ¿Cómo describirías tu mejor restaurante? Busca y visualiza los mejores 
+        restaurantes de una forma sencilla, vota cual te ha gustado más y 
+        comenta como ha sido tu experiencia.
+      </Text>
+      <View style={styles.viewBtn}>
+        <Button 
+          title="Ver tu pefíl"
+          buttonStyle={styles.btnStyle}
+          containerStyle={styles.btnContainer}
+          onPress={() => navigator.navigate("login")}
         />
-        <Text style={styles.title}>Consulta tu perfíl</Text>
-        <Text style={styles.description}>
-          ¿Cómo describirías tu mejor restaurante? Busca y visualiza los mejores 
-          restaurantes de una forma sencilla, vota cual te ha gustado más y 
-          comenta como ha sido tu experiencia.
-        </Text>
-        <View style={styles.viewBtn}>
-          <Button 
-            title="Ver tu pefíl"
-            buttonStyle={styles.btnStyle}
-            containerStyle={styles.btnContainer}
-            onPress={() => console.log("Click!!")}
-          />
-        </View>
-      </ScrollView>
-    );
+      </View>
+    </ScrollView>
+  );
     
 }
 const styles = StyleSheet.create({
